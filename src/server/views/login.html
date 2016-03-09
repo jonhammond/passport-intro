@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+  <div class="container">
+
+    <h1>{{ title }}</h1>
+    <p>Welcome to {{ title }}</p>
+    <br><br>
+    <form action="/login" method="POST">
+      Email:
+      <input type="email" name="email" placeholder="Your Email" required autofocus>
+      <br>
+      Password:
+      <input type="password" name="password" placeholder="Password goes here" required>
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+
+  </div>
+
+{% endblock %}
