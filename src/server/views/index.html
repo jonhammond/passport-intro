@@ -7,14 +7,16 @@
 
   <div class="container">
 
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
+    {% if user %}
+      <h1>Welcome,&nbsp;<strong>{{ user.email }} <strong>!</h1>
+    {% else %}
+      <h1>Please&nbsp;<a href="/login">login</a>!</h1>
+    {% endif %}
 
-  </div>
+    <br><br>
 
-  <div class="row">
     <a href="/register">Register Now!</a>
-  </div>
 
+  </div>
 
 {% endblock %}
