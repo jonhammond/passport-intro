@@ -12,19 +12,25 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  res.render('login', { title: 'Passport Login' });
+  console.log(req.body.email);
+  var userEmail = req.body.email;
+  var userPassword = req.body.password;
+  res.send({ title: 'Passport Login', email: userEmail, password: userPassword });
+});
+
+router.get('/logout', function(req, res, next) {
+  res.redirect('/');
+});
+
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'Register for Passport' });
+});
+
+router.post('/register', function(req, res, next) {
+  console.log(req.body.email);
+  var userEmail = req.body.email;
+  var userPassword = req.body.password;
+  res.send({ title: 'Passport Login', email: userEmail, password: userPassword });
 });
 
 module.exports = router;
-
-exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', function(table) {
-      table.increments();
-      table.string('email').unique().notNullable();
-      table.string('password').notNullable();
-  });
-};
-
-exports.down = function(knex, Promise) {
-  return knex.schema.dropTable('users');
-};
