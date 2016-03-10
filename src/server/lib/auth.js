@@ -1,6 +1,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var knex = require('../../../db/knex.js');
+var helpers = require('./helper');
 
 function Users () {
   return knex('users');
@@ -17,8 +18,9 @@ passport.use(new LocalStrategy({
       }
       var user = data[0];
       //email found but do the passwords match?
-      if (password === user.password) {
+      if (helpers.comparePassword(password, user.password)) {
         // passwords match! return user
+        console.log('passwords match!');
         return done(null, user);
       }
       else {

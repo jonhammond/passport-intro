@@ -21,13 +21,18 @@
     </form>
 
     <div class="row">
-      <p>Email entered: {{ email }}</p>
-      <p>Password entered: {{ password }}</p>
+      <a href='/register'>Register</a>
     </div>
 
     {% if email %}
     <div class="row">
       <a href="/logout">Logout</a>
+    </div>
+    {% endif %}
+
+    {% if message.length %}
+    <div class="container">
+      <p>{{ message[0].message }}</p>
     </div>
     {% endif %}
 

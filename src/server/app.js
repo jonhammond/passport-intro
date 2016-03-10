@@ -10,7 +10,7 @@ var swig = require('swig');
 var Promise = require('bluebird');
 var session = require('express-session');
 var passport = require('./lib/auth');
-
+var flash = require('connect-flash');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
@@ -41,6 +41,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
